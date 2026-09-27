@@ -1,0 +1,33 @@
+[project]
+name = "skin-lesion-classifier"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Lun4R-420", email = "adelynaspoiala@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "torch>=2.11.0",
+    "torchvision>=0.26.0",
+]
+
+[project.scripts]
+skin-lesion-classifier = "skin_lesion_classifier:main"
+
+[build-system]
+requires = ["uv_build>=0.12.15,<0.13.0"]
+build-backend = "uv_build"
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
+torchvision = [
+  { index = "pytorch-cu128", marker = "sys_platform == 'linux' or sys_platform == 'win32'" },
+]
